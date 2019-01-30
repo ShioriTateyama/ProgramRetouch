@@ -93,12 +93,12 @@ public class DeliveryMethodDAO {
 
 	/**
      *購入IDによる配送方法検索
-     * @param buyId
+     * @param deliveryMid
      * @return dmdb DeliveryMethodDataBeans
      *             配送方法の情報に対応するデータを持つJavaBeans
      * @throws SQLException
      */
-	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByBuyId(int buyId) throws SQLException {
+	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByBuyId(String deliveryMid) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -111,7 +111,7 @@ public class DeliveryMethodDAO {
 					+ " JOIN m_delivery_method"
 					+ " ON m_delivery_method.id = t_buy.delivery_method_id"
 					+ " WHERE t_buy.id = ?");
-			st.setInt(1, buyId);
+			st.setString(1, deliveryMid);
 
 			ResultSet rs = st.executeQuery();
 			DeliveryMethodDataBeans dmdb = new DeliveryMethodDataBeans();
