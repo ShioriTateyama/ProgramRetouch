@@ -54,6 +54,8 @@
 					<div class="card-content">
 						<table class="bordered">
 							<thead>
+
+
 								<tr>
 									<th style="width: 10%"></th>
 									<th class="center">購入日時</th>
@@ -62,20 +64,15 @@
 								</tr>
 							</thead>
 							<tbody>
-
+							<c:forEach var="buyDataList" items="${buyDataList}" >
 								<tr>
-									<td class="center"><a href="UserBuyHistoryDetail?buy_id=1" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
-									<td class="center">1234年56月78日90時12分</td>
-									<td class="center">サンプル配送料金</td>
-									<td class="center"><123456789円円</td>
-								</tr>
-								<tr>
-									<td class="center"><a href="UserBuyHistoryDetail?buy_id=2" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
-									<td class="center">1234年56月78日90時12分</td>
-									<td class="center">サンプル配送料金</td>
-									<td class="center"><123456789円円</td>
+									<td class="center"><a href="UserBuyHistoryDetail?buy_id=${buyDataList.id}" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
+									<td class="center">${buyDataList.formatDate}</td>
+									<td class="center">${buyDataList.deliveryMethodName}</td>
+									<td class="center">${buyDataList.totalPrice}円</td>
 								</tr>
 
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
